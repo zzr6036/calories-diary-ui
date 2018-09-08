@@ -1,0 +1,7 @@
+{
+  "name": "calories-diary-ui",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
