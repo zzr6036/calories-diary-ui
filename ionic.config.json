@@ -1,7 +1,8 @@
 {
   "name": "calories-diary-ui",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }

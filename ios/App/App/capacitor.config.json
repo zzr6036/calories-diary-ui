@@ -1,0 +1,6 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "calories-diary-ui",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
