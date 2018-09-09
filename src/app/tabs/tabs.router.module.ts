@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
-import { HomePage } from '../home/home.page';
-import { AboutPage } from '../about/about.page';
-import { ContactPage } from '../contact/contact.page';
+import { DashboardPage } from '../dashboard/dashboard.page';
+import { ReportPage } from '../report/report.page';
+import { SettingsPage } from '../settings/settings.page';
 
 const routes: Routes = [
   {
@@ -12,25 +12,25 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'home',
-        outlet: 'home',
-        component: HomePage
+        path: 'dashboard',
+        outlet: 'dashboard',
+        component: DashboardPage
       },
       {
-        path: 'about',
-        outlet: 'about',
-        component: AboutPage
+        path: 'report',
+        outlet: 'report',
+        component: ReportPage
       },
       {
-        path: 'contact',
-        outlet: 'contact',
-        component: ContactPage
+        path: 'settings',
+        outlet: 'settings',
+        component: SettingsPage
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/(home:home)',
+    redirectTo: '/tabs/(dashboard:dashboard)',
     pathMatch: 'full'
   }
 ];
