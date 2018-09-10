@@ -1,0 +1,41 @@
+<ion-content class="register-content" padding>
+  <ion-row class="log-row">
+    <ion-col>
+        <img src="./../../assets/logo.png" />
+    </ion-col>
+  </ion-row>
+  <ion-row class="register-box">
+    <ion-col>
+      <form (ngSubmit)="register()" #registerForm="ngForm">
+        <ion-row>
+          <ion-col>
+            <ion-list insert>
+              <ion-item>
+                  <ion-input type="text" placeholder="Username" name="username" [(ngModel)]="registerCredentials.username" required></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-input type="text" placeholder="Password" name="password" [(ngModel)]="registerCredentials.password" required></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-input type="text" placeholder="Confirmed Password" name="confirmPassword" [(ngModel)]="registerCredentials.confirmPassword" required></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-input type="email" placeholder="Email" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-input type="text" placeholder="Gender" name="gender" [(ngModel)]="registerCredentials.gender" required></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col class="signup-col">
+              <button ion-button class="btn btn-success w-100" full type="submit" [disabled]="!registerForm.form.valid">Register</button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
