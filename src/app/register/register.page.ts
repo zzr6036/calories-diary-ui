@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+// add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component
 
 @Component({
   selector: 'app-register',
@@ -26,7 +29,7 @@ export class RegisterPage implements OnInit {
     }
     // to do
     else{
-      
+
     }
   }
 
