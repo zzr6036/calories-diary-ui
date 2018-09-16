@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, RouteReuseStrategy } from '@angular/router';
+import { HttpModule, Http, Response } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -10,13 +12,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import { TabsPage } from './tabs/tabs.page'
 
+import { Globals } from './global';
+
+const resourceUrl = 'http://localhost:5000';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [StatusBar,
-              SplashScreen,
-              {provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule,
+    HttpModule,
+    HttpClientModule
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    {provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    HttpClientModule,
+    Globals
   ],
   bootstrap: [AppComponent],
 })
