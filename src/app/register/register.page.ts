@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
-// add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component
+import { Http, HttpModule} from '@angular/http';
+import { map } from 'rxjs/operators/';
+import { ActivatedRoute, Router } from "@angular/router";
+import { Observable, of, throwError } from 'rxjs';
+// import 'rxjs/Rx';
+// import 'rxjs/add/operator/map'
 
 @Component({
   selector: 'app-register',
@@ -16,9 +19,12 @@ export class RegisterPage implements OnInit {
     password: '',
     confirmPassword: '',
     gender: ''
-	};
+  };
+  registerDetail: any;
 
-  constructor(private alertCtrl: AlertController) { }
+  constructor(private alertCtrl: AlertController,
+              private http: Http,
+              private router: Router,) { }
 
   ngOnInit() {
   }
@@ -29,7 +35,17 @@ export class RegisterPage implements OnInit {
     }
     // to do
     else{
-
+      let registerUrl = 'http://183.90.36.107:5000/caloriesdiary/api/user/register'
+      let getUrl = 'http://183.90.36.107:5000/caloriesdiary/api/user/get'
+      this.registerDetail = {
+        Username: this.registerCredentials.username,
+        Email: this.registerCredentials.email,
+        Password: this.registerCredentials.password,
+        Gender: this.registerCredentials.gender
+      }
+      this.http.post(registerUrl, this.registerDetail, {}).pipe(map(res => res.json())).subscribe(data => {
+        
+      })
     }
   }
 

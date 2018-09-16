@@ -5,14 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DashboardPage } from './dashboard.page';
+import { StatisticPage } from './statistic.page';
 
-// const routes: Routes = [
-//   {
-//     path: '',
-//     component: DashboardPage
-//   }
-// ];
+const routes: Routes = [
+  {
+    path: '',
+    component: StatisticPage
+  }
+];
 
 @NgModule({
   imports: [
@@ -20,8 +20,8 @@ import { DashboardPage } from './dashboard.page';
     FormsModule,
     IonicModule,
     // RouterModule.forChild(routes)
-    RouterModule.forChild([{ path: '', component: DashboardPage }])
+    RouterModule.forChild([{ path: '', component: StatisticPage }])
   ],
-  declarations: [DashboardPage]
+  declarations: [StatisticPage]
 })
-export class DashboardPageModule {}
+export class StatisticPageModule {}

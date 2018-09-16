@@ -10,6 +10,7 @@ import { TabsPage } from './tabs.page';
 import { DashboardPageModule } from '../dashboard/dashboard.module';
 import { ReportPageModule } from '../report/report.module';
 import { SettingsPageModule } from '../settings/settings.module';
+import { StatisticPageModule } from '../statistic/statistic.module'
 
 @NgModule({
   imports: [
@@ -19,8 +20,11 @@ import { SettingsPageModule } from '../settings/settings.module';
     TabsPageRoutingModule,
     ReportPageModule,
     SettingsPageModule,
-    DashboardPageModule
+    DashboardPageModule,
+    StatisticPageModule
   ],
   declarations: [TabsPage]
 })
-export class TabsPageModule {}
+export class TabsPageModule {
+  
+}

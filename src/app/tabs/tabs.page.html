@@ -1,11 +1,14 @@
 <ion-tabs>
-  <ion-tab label="Dashboard" icon="home" href="/tabs/(dashboard:dashboard)">
+  <ion-tab label="Dashboard" icon="home" href="/tab/tabs/(dashboard:dashboard)">
     <ion-router-outlet name="dashboard"></ion-router-outlet>
   </ion-tab>
-  <ion-tab label="Report" icon="information-circle" href="/tabs/(report:report)">
+  <ion-tab label="Personal Statistic" icon="Contact" href="/tab/tabs/(statistic:statistic)">
+    <ion-router-outlet name="statistic"></ion-router-outlet>
+  </ion-tab>
+  <ion-tab label="Report" icon="information-circle" href="/tab/tabs/(report:report)">
     <ion-router-outlet name="report"></ion-router-outlet>
   </ion-tab>
-  <ion-tab label="Settings" icon="Settings" href="/tabs/(settings:settings)">
+  <ion-tab label="Settings" icon="Settings" href="/tab/tabs/(settings:settings)">
     <ion-router-outlet name="settings"></ion-router-outlet>
   </ion-tab>
 </ion-tabs>

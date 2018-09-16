@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Personal Statistic</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="personal-statistic-content" padding>
+    <ion-row class="personal-statistic-box">
+        <ion-col>
+          <form (ngSubmit)="submit()" #submitForm="ngForm">
+            <ion-row>
+              <ion-col>
+                <ion-list insert>
+                  <ion-item>
+                      <ion-label>Age:</ion-label>
+                      <ion-input type="number" name="age" [(ngModel)]="age" min="0" oninput="this.value = Math.abs(this.value)" text-right required></ion-input>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label>Weight (kg):</ion-label>
+                      <ion-input type="number" name="weight" [(ngModel)]="weight" min="0" oninput="this.value = Math.abs(this.value)" text-right required></ion-input>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label>Height (cm):</ion-label>
+                      <ion-input type="number" name="height" [(ngModel)]="height" min="0" oninput="this.value = Math.abs(this.value)" text-right required></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>Record Date:</ion-label>
+                    <ion-datetime display-format="DD/MM/YYYY" name="record-date" [(ngModel)]="recordDate" pickerFormat="DD MM YYYY"></ion-datetime>
+                  </ion-item>
+                </ion-list>
+              </ion-col>
+            </ion-row>
+    
+            <ion-row>
+              <ion-col class="signup-col">
+                  <button ion-button class="btn btn-success w-100" full type="submit" [disabled]="!submitForm.form.valid">Submit</button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-col>
+      </ion-row>
+</ion-content>

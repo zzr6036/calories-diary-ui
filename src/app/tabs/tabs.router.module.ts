@@ -5,6 +5,7 @@ import { TabsPage } from './tabs.page';
 import { DashboardPage } from '../dashboard/dashboard.page';
 import { ReportPage } from '../report/report.page';
 import { SettingsPage } from '../settings/settings.page';
+import { StatisticPage } from '../statistic/statistic.page'
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
         path: 'settings',
         outlet: 'settings',
         component: SettingsPage
+      },
+      {
+        path: 'statistic',
+        outlet: 'statistic',
+        component: StatisticPage
       }
     ]
   },
