@@ -1,10 +1,25 @@
-.calories-display{
+.calories-display {
     background-color: rgb(85, 207, 191);
     height: 35%;
 }
 
-.target-calories{
-    width: 98%;
+.target-calories {
+    width: 95%;
     height: 25%;
-    margin: 4px;
+    margin: 10px;
+}
+.calendar-header {
+    background-color: #e74545;
+    color: #FFFFFF;
+    width: 345px;
+  }
+.calendar-date {
+    padding: 3px;
+    margin-left: 5px;
+}
+.meal-label {
+    margin-left: 10px;
+}
+.meal-selection {
+    margin: 10px;
 }

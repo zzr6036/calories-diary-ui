@@ -24,7 +24,7 @@ const resourceUrl = 'http://localhost:5000';
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     StatusBar,

@@ -31,6 +31,7 @@ export class LoginPage implements OnInit {
 	}
 
 	public login() {
+		// this.navCtrl.goForward('/tab/tabs/(statistic:statistic)');
 		// post user login api, to do
 		let q = {
 			Username: this.registerCredentials.email,

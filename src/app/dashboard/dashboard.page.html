@@ -5,33 +5,87 @@
 </ion-header>
 
 <ion-content class="dashboard-content" padding>
-  <ion-card class="target-calories">  
-      <ion-card-header class="calories-display">
-          <p style="font-weight: bold; font-size: 18px; color: white;" text-center>1200 Calories Left</p>
-        </ion-card-header>
-    <ion-card-content class="calories-content"> 
+
+  <div class="calendar-header">
+    <ion-grid>
+      <ion-row class="calendar-month">
+        <ion-col size="4" (click)="goToLastDay()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-col>
+        <ion-col col-8 size="7" (click)="goToCalendar()">
+          <ion-datetime display-format="DD/MM/YYYY" class="calendar-date" style="font-size: 13px; color: white;" [(ngModel)]="currentDate"
+            pickerFormat="DD MM YYYY">
+            <ion-icon name="calendar" class="calendar-icon"></ion-icon>
+          </ion-datetime>
+        </ion-col>
+        <ion-col size="1" (click)="goToNextDay()" class="cal-icon">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+  <ion-card class="target-calories">
+    <ion-card-header class="calories-display">
+      <p style="font-weight: bold; font-size: 18px; color: white;" text-center>1200 Calories Left</p>
+    </ion-card-header>
+    <ion-card-content class="calories-content">
       <ion-row>
         <ion-col>
-            <p style="font-weight: bold; font-size: 18px; color: rgb(85, 207, 191);" text-center>0</p>
+          <p style="font-weight: bold; font-size: 18px; color: rgb(85, 207, 191);" text-center>0</p>
         </ion-col>
         <ion-col>
-            <p style="font-weight: bold; font-size: 18px; color: rgb(211, 55, 55);" text-center>0</p>
+          <p style="font-weight: bold; font-size: 18px; color: rgb(211, 55, 55);" text-center>0</p>
         </ion-col>
         <ion-col>
-            <p style="font-weight: bold; font-size: 18px; color: rgb(0, 0, 0);" text-center>0</p>
+          <p style="font-weight: bold; font-size: 18px; color: rgb(0, 0, 0);" text-center>0</p>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-            <p style="font-size: 15px; color: rgb(0, 0, 0);" text-center>Consumed</p>
+          <p style="font-size: 15px; color: rgb(0, 0, 0);" text-center>Consumed</p>
         </ion-col>
         <ion-col>
-            <p style="font-size: 15px; color: rgb(0, 0, 0);" text-center>Burned</p>
-          </ion-col>
-          <ion-col>
-              <p style="font-size: 15px; color: rgb(0, 0, 0);" text-center>Net</p>
-            </ion-col>
+          <p style="font-size: 15px; color: rgb(0, 0, 0);" text-center>Burned</p>
+        </ion-col>
+        <ion-col>
+          <p style="font-size: 15px; color: rgb(0, 0, 0);" text-center>Net</p>
+        </ion-col>
       </ion-row>
     </ion-card-content>
   </ion-card>
+
+  <ion-row class="meal-selection">
+    <ion-col>
+      <ion-item>
+        <ion-img src="./../../assets/sport.png" style="width: 30px; height: 30px;"></ion-img>
+        <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
+          Exercise
+        </ion-label>
+        <ion-icon name="arrow-forward" (click)="exerciseSelection()"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-img src="./../../assets/breakfast.png" style="width: 30px; height: 30px;"></ion-img>
+        <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
+          Breakfast
+        </ion-label>
+        <ion-icon name="arrow-forward" (click)="breakfastSelection()"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-img src="./../../assets/lunch.png" style="width: 30px; height: 30px;"></ion-img>
+        <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
+          Lunch
+        </ion-label>
+        <ion-icon name="arrow-forward" (click)="lunchSelection()"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-img src="./../../assets/dinner.png" style="width: 30px; height: 30px;"></ion-img>
+        <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
+          Dinner
+        </ion-label>
+        <ion-icon name="arrow-forward" (click)="dinnerSelection()"></ion-icon>
+      </ion-item>
+    </ion-col>
+  </ion-row>
 </ion-content>
