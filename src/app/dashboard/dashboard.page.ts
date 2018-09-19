@@ -42,7 +42,7 @@ export class DashboardPage implements OnInit {
 
   set currentDate(value: any) {
     if (typeof (value) !== 'string') {
-      const { year, month, day, hour } = value,
+      const { year, month, day } = value,
         date = new Date(year.value, month.value - 1, day.value);
       this._currentDate = moment(date).format();
     } else {
