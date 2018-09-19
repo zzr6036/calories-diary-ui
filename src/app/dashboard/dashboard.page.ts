@@ -7,7 +7,7 @@ import * as moment from 'moment';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-  public currentDate = moment().format()
+  private _currentDate: any = moment().format();
 
   constructor() { }
 
@@ -15,10 +15,10 @@ export class DashboardPage implements OnInit {
   }
 
   goToLastDay(){
-    this.currentDate = moment().subtract(1, 'days').format()
+    this.currentDate = moment(this.currentDate).subtract(1, 'days').format()
   }
   goToNextDay(){
-    this.currentDate = moment().add(1, 'days').format()
+    this.currentDate = moment(this.currentDate).add(1, 'days').format()
   }
   exerciseSelection(){
 
@@ -32,5 +32,21 @@ export class DashboardPage implements OnInit {
   dinnerSelection(){
     
   }
+  changeDate(value) {
+    console.log(this.currentDate);
+  }
 
+  get currentDate() {
+    return this._currentDate;
+  }
+
+  set currentDate(value: any) {
+    if (typeof (value) !== 'string') {
+      const { year, month, day, hour } = value,
+        date = new Date(year.value, month.value - 1, day.value);
+      this._currentDate = moment(date).format();
+    } else {
+      this._currentDate = value;
+    }
+  }
 }

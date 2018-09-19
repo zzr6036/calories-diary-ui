@@ -12,9 +12,9 @@
         <ion-col size="4" (click)="goToLastDay()">
           <ion-icon name="arrow-back"></ion-icon>
         </ion-col>
-        <ion-col col-8 size="7" (click)="goToCalendar()">
-          <ion-datetime display-format="DD/MM/YYYY" class="calendar-date" style="font-size: 13px; color: white;" [(ngModel)]="currentDate"
-            pickerFormat="DD MM YYYY">
+        <ion-col col-8 size="7">
+          <ion-datetime #myPicker display-format="DD/MM/YYYY" class="calendar-date" style="font-size: 13px; color: white;" [(ngModel)]="currentDate"
+            pickerFormat="DD MM YYYY" (ionChange)="changeDate(myPicker.value)">
             <ion-icon name="calendar" class="calendar-icon"></ion-icon>
           </ion-datetime>
         </ion-col>
