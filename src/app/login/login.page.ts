@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
 	}
 
 	public login() {
-		// this.navCtrl.goForward('/tab/tabs/(statistic:statistic)');
+		// this.navCtrl.navigateForward('/tab/tabs/(statistic:statistic)');
 		// post user login api, to do
 		let q = {
 			Username: this.registerCredentials.email,
@@ -40,7 +40,9 @@ export class LoginPage implements OnInit {
 
 		this.http.post(this.globals.resourceUrl + '/api/user/login', q).subscribe(resp => {
 			console.log(resp);
-			this.navCtrl.goForward('/tab/tabs/(statistic:statistic)');
+			this.navCtrl.navigateForward('/tab/tabs/(dashboard:dashboard)');
+			//this.router.navigate(['/tab/tabs/(dashboard:dashboard)']);
+
 		})
 	}
 
