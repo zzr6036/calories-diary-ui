@@ -6,6 +6,7 @@ import { DashboardPage } from '../dashboard/dashboard.page';
 import { ReportPage } from '../report/report.page';
 import { SettingsPage } from '../settings/settings.page';
 import { StatisticPage } from '../statistic/statistic.page'
+import { FoodrecordPage } from '../foodrecord/foodrecord.page';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
         path: 'statistic',
         outlet: 'statistic',
         component: StatisticPage
+      },
+      {
+        path: 'foodrecord/:mealType',
+        outlet: 'foodrecord',
+        component: FoodrecordPage
       }
     ]
   },

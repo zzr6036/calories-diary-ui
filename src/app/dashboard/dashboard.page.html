@@ -65,21 +65,21 @@
         </ion-label>
         <ion-icon name="arrow-forward" (click)="exerciseSelection()"></ion-icon>
       </ion-item>
-      <ion-item>
+      <ion-item (click)="addMeal('breakfast')">
         <ion-img src="./../../assets/breakfast.png" style="width: 30px; height: 30px;"></ion-img>
         <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
           Breakfast
         </ion-label>
         <ion-icon name="arrow-forward" (click)="breakfastSelection()"></ion-icon>
       </ion-item>
-      <ion-item>
+      <ion-item (click)="addMeal('lunch')">
         <ion-img src="./../../assets/lunch.png" style="width: 30px; height: 30px;"></ion-img>
         <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
           Lunch
         </ion-label>
         <ion-icon name="arrow-forward" (click)="lunchSelection()"></ion-icon>
       </ion-item>
-      <ion-item>
+      <ion-item (click)="addMeal('dinner')">
         <ion-img src="./../../assets/dinner.png" style="width: 30px; height: 30px;"></ion-img>
         <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
           Dinner

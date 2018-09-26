@@ -11,6 +11,7 @@ import { DashboardPageModule } from '../dashboard/dashboard.module';
 import { ReportPageModule } from '../report/report.module';
 import { SettingsPageModule } from '../settings/settings.module';
 import { StatisticPageModule } from '../statistic/statistic.module'
+import { FoodrecordPageModule } from '../foodrecord/foodrecord.module';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { StatisticPageModule } from '../statistic/statistic.module'
     ReportPageModule,
     SettingsPageModule,
     DashboardPageModule,
-    StatisticPageModule
+    StatisticPageModule,
+    FoodrecordPageModule
   ],
   declarations: [TabsPage]
 })

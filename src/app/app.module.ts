@@ -13,11 +13,12 @@ import { AppComponent } from './app.component';
 // import { TabsPage } from './tabs/tabs.page'
 
 import { Globals } from './global';
+import { FoodrecordComponent } from './foodrecord/foodrecord.component';
 
 const resourceUrl = 'http://localhost:5000';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FoodrecordComponent],
   entryComponents: [],
   imports: [
     BrowserModule, 

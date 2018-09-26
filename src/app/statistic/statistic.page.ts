@@ -21,7 +21,7 @@ export class StatisticPage implements OnInit {
 
   submit(){
     // personal statistic api to do
-    this.navCtrl.goForward('/tab/tabs/(dashboard:dashboard)')
+    this.navCtrl.navigateForward('/tab/tabs/(dashboard:dashboard)')
 
   }
 

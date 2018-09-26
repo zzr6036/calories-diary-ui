@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
+import { NavController } from '@ionic/angular';
 import * as moment from 'moment';
 
 @Component({
@@ -9,7 +11,9 @@ import * as moment from 'moment';
 export class DashboardPage implements OnInit {
   private _currentDate: any = moment().format();
 
-  constructor() { }
+  constructor(
+    private router: Router, 
+		public navCtrl: NavController) { }
 
   ngOnInit() {
   }
@@ -19,6 +23,9 @@ export class DashboardPage implements OnInit {
   }
   goToNextDay(){
     this.currentDate = moment(this.currentDate).add(1, 'days').format()
+  }
+  addMeal(mealType: String) {
+    this.navCtrl.navigateForward('/tab/tabs/(foodrecord:foodrecord/' + mealType + ')')
   }
   exerciseSelection(){
 
