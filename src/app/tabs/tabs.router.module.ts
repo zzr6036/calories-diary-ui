@@ -33,11 +33,11 @@ const routes: Routes = [
         outlet: 'statistic',
         component: StatisticPage
       },
-      {
-        path: 'foodrecord/:mealType',
-        outlet: 'foodrecord',
-        component: FoodrecordPage
-      }
+      // {
+      //   path: 'foodrecord/:mealType',
+      //   outlet: 'foodrecord',
+      //   component: FoodrecordPage
+      // }
     ]
   },
   {

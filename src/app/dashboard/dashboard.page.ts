@@ -10,10 +10,12 @@ import * as moment from 'moment';
 })
 export class DashboardPage implements OnInit {
   private _currentDate: any = moment().format();
-
+  mealType: String
+  
   constructor(
     private router: Router, 
-		public navCtrl: NavController) { }
+    public navCtrl: NavController,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -25,19 +27,10 @@ export class DashboardPage implements OnInit {
     this.currentDate = moment(this.currentDate).add(1, 'days').format()
   }
   addMeal(mealType: String) {
-    this.navCtrl.navigateForward('/tab/tabs/(foodrecord:foodrecord/' + mealType + ')')
+    this.router.navigate(['/foodrecord', mealType])
   }
   exerciseSelection(){
 
-  }
-  breakfastSelection(){
-    
-  }
-  lunchSelection(){
-    
-  }
-  dinnerSelection(){
-    
   }
   changeDate(value) {
     console.log(this.currentDate);

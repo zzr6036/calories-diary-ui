@@ -10,15 +10,13 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// import { TabsPage } from './tabs/tabs.page'
 
 import { Globals } from './global';
-import { FoodrecordComponent } from './foodrecord/foodrecord.component';
 
 const resourceUrl = 'http://localhost:5000';
 
 @NgModule({
-  declarations: [AppComponent, FoodrecordComponent],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule, 

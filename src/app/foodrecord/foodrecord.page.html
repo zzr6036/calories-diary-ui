@@ -1,9 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>foodrecord</ion-title>
+    <ion-nav-bar>
+      <ion-title>Food Record</ion-title>
+      <ion-nav-buttons style="width: 100%; padding: 300px;">
+        <ion-button (click)="done()" ion-button slot="icon-only" fill="clear" color="primary" size="small">Done</ion-button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-test
+  <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Select</th>
+        <th>Item</th>
+        <th>Qty</th>
+        <th>Calories</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td><ion-checkbox color="primary"></ion-checkbox></td>
+        <td>Egg</td>
+        <td>
+          <ion-select  [(ngModel)]="qtySelect" name="qtySelect">
+            <ion-option *ngFor="let qty of qtys" value="{{qty}}">{{qty}}</ion-option>
+          </ion-select>
+          
+        </td>
+        <td>280</td>
+      </tr>
+    </tbody>
+
+  </table>
 </ion-content>
