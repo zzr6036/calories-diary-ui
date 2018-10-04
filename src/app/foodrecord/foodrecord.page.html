@@ -14,26 +14,39 @@
   </ion-searchbar>
 
   <table class="table">
-    <thead>
+    <thead align="center">
       <tr>
-        <th>Select</th>
-        <th>Item</th>
-        <th>Qty</th>
-        <th>Calories</th>
+        <th style="width:10%">Select</th>
+        <th style="width:20%">Item</th>
+        <th style="width:50%">Qty</th>
+        <th style="width:20%">Kcal</th>
       </tr>
     </thead>
 
-    <tbody>
-      <tr>
-        <td><ion-checkbox color="primary"></ion-checkbox></td>
-        <td>Egg</td>
-        <td>
-          <ion-select  [(ngModel)]="qtySelect" name="qtySelect">
-            <ion-option *ngFor="let qty of qtys" value="{{qty}}">{{qty}}</ion-option>
-          </ion-select>
-          
+    <tbody align="center">
+      <tr *ngFor="let foodRecordItem of foodRecordItems; let i=index">
+        <td><ion-checkbox color="primary" [(ngModel)]="foodRecordItems[i].itemSelected" #itemSelected1="ngModel" [checked]=true>
+            </ion-checkbox>
         </td>
-        <td>280</td>
+        <td>{{foodRecordItem.itemName}}</td>
+        <td>
+          <ion-row class="itemQty">
+            <ion-col class="itemQtyIconCol" (click)="reduceQty(i)">
+              <ion-icon name="ios-remove-circle-outline"></ion-icon>
+            </ion-col>
+            <ion-col class="selectQtyCol">
+              <!-- {{foodRecordItem.itemQty}} -->
+              <ion-input type="text" [(ngModel)]="foodRecordItems[i].itemQty"  #itemQty1="ngModel"></ion-input>
+            </ion-col>
+            <ion-col class="itemQtyIconCol" (click)="addQty(i)">
+              <ion-icon name="ios-add-circle-outline"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <!-- <ion-select [(ngModel)]="foodRecordItem.itemQty" name="itemQty" multiple="true">
+            <ion-option *ngFor="let itemQty of itemQtys" value="{{itemQty}}">{{itemQty}}</ion-option>
+          </ion-select> -->
+        </td>
+        <td>{{foodRecordItem.itemCalories}}</td>
       </tr>
     </tbody>
 
