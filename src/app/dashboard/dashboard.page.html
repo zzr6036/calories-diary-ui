@@ -13,8 +13,8 @@
           <ion-icon name="arrow-back"></ion-icon>
         </ion-col>
         <ion-col col-8 size="7">
-          <ion-datetime #myPicker display-format="DD/MM/YYYY" class="calendar-date" style="font-size: 13px; color: white;" [(ngModel)]="currentDate"
-            pickerFormat="DD MM YYYY" (ionChange)="changeDate(myPicker.value)">
+          <ion-datetime #myPicker display-format="DD/MM/YYYY" class="calendar-date" style="font-size: 13px; color: white;"
+            [(ngModel)]="currentDate" pickerFormat="DD MM YYYY" (ionChange)="changeDate(myPicker.value)">
             <ion-icon name="calendar" class="calendar-icon"></ion-icon>
           </ion-datetime>
         </ion-col>
@@ -58,33 +58,43 @@
 
   <ion-row class="meal-selection">
     <ion-col>
+      <ion-list>
+        <ion-item>
+          <button clear text-center class="add-remove-icons" (click)="toggleExercise()">
+            <ion-icon [name]="visible ? 'remove-circle-outline' :'add-circle-outline'"></ion-icon>
+          </button>
+          <!-- <ion-icon name="add-circle-outline" click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}"></ion-icon> -->
+          <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
+            Exercise
+          </ion-label>
+          <ion-img src="./../../assets/sport.png" style="width: 30px; height: 30px;"></ion-img>
+          <ion-icon name="arrow-forward" (click)="exerciseSelection()"></ion-icon>
+        </ion-item>
+        <div class="collapsible-list" *ngIf="visible">
+          sss
+        </div>
+      </ion-list>
+
       <ion-item>
-        <ion-img src="./../../assets/sport.png" style="width: 30px; height: 30px;"></ion-img>
-        <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
-          Exercise
-        </ion-label>
-        <ion-icon name="arrow-forward" (click)="exerciseSelection()"></ion-icon>
-      </ion-item>
-      <ion-item (click)="addMeal('breakfast')">
-        <ion-img src="./../../assets/breakfast.png" style="width: 30px; height: 30px;"></ion-img>
         <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
           Breakfast
         </ion-label>
-        <ion-icon name="arrow-forward"></ion-icon>
+        <ion-img src="./../../assets/breakfast.png" style="width: 30px; height: 30px;"></ion-img>
+        <ion-icon name="arrow-forward" (click)="addMeal('breakfast')"></ion-icon>
       </ion-item>
-      <ion-item (click)="addMeal('lunch')">
-        <ion-img src="./../../assets/lunch.png" style="width: 30px; height: 30px;"></ion-img>
+      <ion-item>
         <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
           Lunch
         </ion-label>
-        <ion-icon name="arrow-forward"></ion-icon>
+        <ion-img src="./../../assets/lunch.png" style="width: 30px; height: 30px;"></ion-img>
+        <ion-icon name="arrow-forward" (click)="addMeal('lunch')"></ion-icon>
       </ion-item>
-      <ion-item (click)="addMeal('dinner')">
-        <ion-img src="./../../assets/dinner.png" style="width: 30px; height: 30px;"></ion-img>
+      <ion-item>
         <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
           Dinner
         </ion-label>
-        <ion-icon name="arrow-forward"></ion-icon>
+        <ion-img src="./../../assets/dinner.png" style="width: 30px; height: 30px;"></ion-img>
+        <ion-icon name="arrow-forward" (click)="addMeal('dinner')"></ion-icon>
       </ion-item>
     </ion-col>
   </ion-row>

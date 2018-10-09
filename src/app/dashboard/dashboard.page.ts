@@ -11,6 +11,7 @@ import * as moment from 'moment';
 export class DashboardPage implements OnInit {
   private _currentDate: any = moment().format();
   mealType: String
+  visible = false;
   
   constructor(
     private router: Router, 
@@ -49,4 +50,8 @@ export class DashboardPage implements OnInit {
       this._currentDate = value;
     }
   }
+
+  toggleExercise() {
+    this.visible = !this.visible;
+   }
 }
