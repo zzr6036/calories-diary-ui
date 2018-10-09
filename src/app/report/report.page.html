@@ -1,39 +1,43 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Report</ion-title>
-  </ion-toolbar>
+	<ion-toolbar>
+		<ion-title>Report</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <canvas #lineCanvas></canvas>
-      </ion-col>
-    </ion-row>
-    <ion-row class="square-container text-center">
-      <ion-col class="square">
-        <div class="square-content">
-          <div class="text-center w-100">BMI</div>
-        </div>
-      </ion-col>
-      <ion-col class="square">
-        <div class="square-content">
-          <div class="text-center w-100">BMR</div>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="square-container text-center">
-      <ion-col class="square">
-        <div class="square-content">
-          <div class="text-center w-100">Some Stats</div>
-        </div>
-      </ion-col>
-      <ion-col class="square">
-        <div class="square-content">
-          <div class="text-center w-100">Other Stats</div>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<canvas #lineCanvas height="400px"></canvas>
+			</ion-col>
+		</ion-row>
+		<ion-row class="square-container text-center">
+			<ion-col class="square">
+				<div class="square-content bg-primary text-white">
+					<div class="text-center w-100"><strong>BMI</strong></div>
+					<div class="text-center w-100">21.5</div>
+				</div>
+			</ion-col>
+			<ion-col class="square">
+				<div class="square-content bg-success text-white">
+					<div class="text-center w-100"><strong>BMR</strong></div>
+					<div class="text-center w-100">1827 kcal/day</div>
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row class="square-container text-center">
+			<ion-col class="square">
+				<div class="square-content bg-warning text-white">
+					<div class="text-center w-100"><strong>Max Daily Calories Intake</strong></div>
+					<div class="text-center w-100">2200 kcal/day</div>
+				</div>
+			</ion-col>
+			<ion-col class="square">
+				<div class="square-content bg-info text-white">
+					<div class="text-center w-100"><strong>Weight Status</strong></div>
+					<div class="text-center w-100">Normal</div>
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 </ion-content>

@@ -1,5 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import Chart from 'chart.js'
+import { HttpClient } from '@angular/common/http';
+import { Storage } from '@ionic/storage';
+import Chart from 'chart.js';
+import { Globals } from './../global';
 
 @Component({
   selector: 'app-report',
@@ -7,49 +10,51 @@ import Chart from 'chart.js'
   styleUrls: ['./report.page.scss'],
 })
 export class ReportPage implements OnInit, AfterViewInit {
-  public lineChart: any;
-
   @ViewChild('lineCanvas') lineCanvas;
-  constructor() { }
+  public lineChart: any;
+  public personalInfo: any;
+  
+  constructor(
+	  	private http: HttpClient,
+		private globals: Globals,
+		private storage: Storage) { }
 
   ngOnInit() {
+	
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.lineChart = this.getLineChart();
-    }, 350);
+    this.lineChart = this.renderChart();
   }
-
-  getChart(context, chartType, data, options?) {
-    return new Chart(context, {
-      data,
-      options,
-      type: chartType,
-    });
-  }
-
-  getLineChart() {
-    const data = {
-      labels: ['Red', 'Blue', 'Yellow'],
-      datasets: [
-        {
-          data: [
-            {
-            x: 10,
-            y: 20
-          }, {
-            x: 15,
-            y: 10
-          }, {
-            x: 20,
-            y: 15
+  
+  renderChart() {
+    const today = new Date();
+    const dateRanges = [];
+    for(let i = 0; i < 7; i++) {
+      dateRanges.push(new Date(today.getFullYear(), today.getMonth(), today.getDate() - i));
+    }
+    
+    const data = [10, 15, 20];
+    const options = {};
+    const config = {
+      type: 'line',
+      data: {
+        labels: dateRanges.reverse().map(d => [d.getMonth() + 1, '-', d.getDate()].join('')),
+        datasets: [{ 
+            data: [1823, 1923, 2019, 1729, 1928, 2001, 1993],
+            label: "Calories",
+            borderColor: "#3e95cd",
+            fill: false
           }
         ]
-        }]
-    };
-    console.log(this.lineCanvas.nativeElement);
-    return this.getChart(this.lineCanvas.nativeElement, 'line', data);
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Weekly Calories Intakes'
+        }
+      }
+    }
+    return new Chart(this.lineCanvas.nativeElement, config);
   }
-
 }
