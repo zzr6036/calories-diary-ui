@@ -1,10 +1,17 @@
 <ion-header>
   <ion-toolbar>
     <ion-nav-bar>
-      <ion-title>Food Record</ion-title>
-      <ion-nav-buttons style="width: 100%; padding: 300px;">
-        <ion-button (click)="done()" ion-button slot="icon-only" fill="clear" color="primary" size="small">Done</ion-button>
+      <ion-nav-buttons>
+        <ion-title>Food Record</ion-title>
+        <ion-button (click)="back()" ion-button slot="icon-only" fill="clear" color="primary" size="small">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+        <ion-button class="doneIcon" (click)="done()" ion-button slot="icon-only" fill="clear" color="primary" size="small">Done</ion-button>
       </ion-nav-buttons>
+      <!-- <ion-nav-buttons style="width: 100%; padding: 300px; margin:5px">
+        <ion-title>Food Record</ion-title>
+        <ion-button (click)="done()" ion-button slot="icon-only" fill="clear" color="primary" size="small">Done</ion-button>
+      </ion-nav-buttons> -->
     </ion-nav-bar>
   </ion-toolbar>
 </ion-header>
@@ -25,8 +32,10 @@
 
     <tbody align="center">
       <tr *ngFor="let foodRecordItem of foodRecordItems; let i=index">
-        <td><ion-checkbox class="itemSelectControl" color="primary" [(ngModel)]="foodRecordItems[i].itemSelected" #itemSelected1="ngModel" [checked]=true>
-            </ion-checkbox>
+        <td>
+          <ion-checkbox class="itemSelectControl" color="primary" [(ngModel)]="foodRecordItems[i].itemSelected" #itemSelected1="ngModel"
+            [checked]=true>
+          </ion-checkbox>
         </td>
         <td class="itemNameControl">{{foodRecordItem.itemName}}</td>
         <td>
@@ -35,7 +44,7 @@
               <ion-icon name="ios-remove-circle-outline"></ion-icon>
             </ion-col>
             <ion-col class="selectQtyCol">
-              <ion-input type="number" [(ngModel)]="foodRecordItems[i].itemQty"  #itemQty1="ngModel" min="0" value="0" oninput="this.value = Math.floor(Math.abs(this.value))"></ion-input>
+              <ion-input type="number" [(ngModel)]="foodRecordItems[i].itemQty" #itemQty1="ngModel" min="0" value="0" oninput="this.value = Math.floor(Math.abs(this.value))"></ion-input>
             </ion-col>
             <ion-col class="itemControl" (click)="addQty(i)">
               <ion-icon name="ios-add-circle-outline"></ion-icon>

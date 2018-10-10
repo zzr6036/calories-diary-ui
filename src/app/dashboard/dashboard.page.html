@@ -13,8 +13,8 @@
           <ion-icon name="arrow-back"></ion-icon>
         </ion-col>
         <ion-col col-8 size="7">
-          <ion-datetime #myPicker display-format="DD/MM/YYYY" class="calendar-date" style="font-size: 13px; color: white;"
-            [(ngModel)]="currentDate" pickerFormat="DD MM YYYY" (ionChange)="changeDate(myPicker.value)">
+          <ion-datetime #myPicker display-format="DD/MM/YYYY" class="calendar-date" style="font-size: 13px; color: white;" [(ngModel)]="currentDate"
+            pickerFormat="DD MM YYYY" (ionChange)="changeDate(myPicker.value)">
             <ion-icon name="calendar" class="calendar-icon"></ion-icon>
           </ion-datetime>
         </ion-col>
@@ -58,44 +58,130 @@
 
   <ion-row class="meal-selection">
     <ion-col>
-      <ion-list>
-        <ion-item>
-          <button clear text-center class="add-remove-icons" (click)="toggleExercise()">
-            <ion-icon [name]="visible ? 'remove-circle-outline' :'add-circle-outline'"></ion-icon>
-          </button>
-          <!-- <ion-icon name="add-circle-outline" click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}"></ion-icon> -->
-          <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
-            Exercise
-          </ion-label>
-          <ion-img src="./../../assets/sport.png" style="width: 30px; height: 30px;"></ion-img>
-          <ion-icon name="arrow-forward" (click)="exerciseSelection()"></ion-icon>
-        </ion-item>
-        <div class="collapsible-list" *ngIf="visible">
-          sss
+      <ion-item>
+        <button clear text-center class="add-remove-icons" (click)="toggleExercise()">
+          <ion-icon [name]="visibleExercise ? 'remove-circle-outline' :'add-circle-outline'"></ion-icon>
+        </button>
+        <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
+          Exercise
+        </ion-label>
+        <ion-img src="./../../assets/sport.png" style="width: 30px; height: 30px;"></ion-img>
+        <ion-icon name="arrow-forward" (click)="exerciseSelection()"></ion-icon>
+      </ion-item>
+      <div class="collapsible-list" *ngIf="visibleExercise">
+        <div class="row">
+          <div class="col col-1" style="font-size:12px"></div>
+          <div class="col col-4" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Item</div>
+          <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Time    (mins)</div>
+          <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Calories (Kcal)</div>
         </div>
-      </ion-list>
+        <div class="row" *ngFor="let exerciseItem of exerciseItems; let i=index">
+          <div class="col col-1" style="font-size:12px">{{i+1}}</div>
+          <div class="col col-4" style="font-size:12px">{{exerciseItem.itemName}}</div>
+          <div class="col col-3" style="font-size:12px">{{exerciseItem.itemDuration}}</div>
+          <div class="col col-3" style="font-size:12px">{{exerciseItem.itemCalories}}</div>
+        </div>
+        <div class="row exercise-summary">
+          <div class="col col-1" style="font-size:12px"></div>
+          <div class="col col-4" style="font-size:12px"><strong>Total</strong></div>
+          <div class="col col-3" style="font-size:12px"><strong>{{totalExerciseDuration}}</strong></div>
+          <div class="col col-3" style="font-size:12px"><strong>{{totalExerciseCalories}}</strong></div>
+        </div>
+      </div>
 
       <ion-item>
+        <button clear text-center class="add-remove-icons" (click)="toggleBreakfast()">
+          <ion-icon [name]="visibleBreakfast ? 'remove-circle-outline' :'add-circle-outline'"></ion-icon>
+        </button>
         <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
           Breakfast
         </ion-label>
         <ion-img src="./../../assets/breakfast.png" style="width: 30px; height: 30px;"></ion-img>
         <ion-icon name="arrow-forward" (click)="addMeal('breakfast')"></ion-icon>
       </ion-item>
+      <div class="collapsible-list" *ngIf="visibleBreakfast">
+          <div class="row">
+              <div class="col col-1" style="font-size:12px"></div>
+              <div class="col col-4" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Item</div>
+              <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Qty    </div>
+              <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Calories (Kcal)</div>
+            </div>
+            <div class="row" *ngFor="let breakfastItme of breakfastItmes; let i=index">
+              <div class="col col-1" style="font-size:12px">{{i+1}}</div>
+              <div class="col col-4" style="font-size:12px">{{breakfastItme.itemName}}</div>
+              <div class="col col-3" style="font-size:12px">{{breakfastItme.itemQty}}</div>
+              <div class="col col-3" style="font-size:12px">{{breakfastItme.itemCalories}}</div>
+            </div>
+            <div class="row breakfaset-summary">
+              <div class="col col-1" style="font-size:12px"></div>
+              <div class="col col-4" style="font-size:12px"><strong>Total</strong></div>
+              <div class="col col-3" style="font-size:12px"><strong>{{totalBreakfastItem}}</strong></div>
+              <div class="col col-3" style="font-size:12px"><strong>{{totalBreakfastCalories}}</strong></div>
+            </div>
+      </div>
+
       <ion-item>
+        <button clear text-center class="add-remove-icons" (click)="toggleLunch()">
+          <ion-icon [name]="visibleLunch ? 'remove-circle-outline' :'add-circle-outline'"></ion-icon>
+        </button>
         <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
           Lunch
         </ion-label>
         <ion-img src="./../../assets/lunch.png" style="width: 30px; height: 30px;"></ion-img>
         <ion-icon name="arrow-forward" (click)="addMeal('lunch')"></ion-icon>
       </ion-item>
+      <div class="collapsible-list" *ngIf="visibleLunch">
+          <div class="row">
+              <div class="col col-1" style="font-size:12px"></div>
+              <div class="col col-4" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Item</div>
+              <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Qty    </div>
+              <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Calories (Kcal)</div>
+            </div>
+            <div class="row" *ngFor="let lunchItme of lunchItmes; let i=index">
+              <div class="col col-1" style="font-size:12px">{{i+1}}</div>
+              <div class="col col-4" style="font-size:12px">{{lunchItme.itemName}}</div>
+              <div class="col col-3" style="font-size:12px">{{lunchItme.itemQty}}</div>
+              <div class="col col-3" style="font-size:12px">{{lunchItme.itemCalories}}</div>
+            </div>
+            <div class="row lunch-summary">
+              <div class="col col-1" style="font-size:12px"></div>
+              <div class="col col-4" style="font-size:12px"><strong>Total</strong></div>
+              <div class="col col-3" style="font-size:12px"><strong>{{totalLunchItem}}</strong></div>
+              <div class="col col-3" style="font-size:12px"><strong>{{totalLunchCalories}}</strong></div>
+            </div>
+      </div>
+
       <ion-item>
+        <button clear text-center class="add-remove-icons" (click)="toggleDinner()">
+          <ion-icon [name]="visibleDinner ? 'remove-circle-outline' :'add-circle-outline'"></ion-icon>
+        </button>
         <ion-label class="meal-label" style="font-size: 20px; color: rgb(24, 24, 24);">
           Dinner
         </ion-label>
         <ion-img src="./../../assets/dinner.png" style="width: 30px; height: 30px;"></ion-img>
         <ion-icon name="arrow-forward" (click)="addMeal('dinner')"></ion-icon>
       </ion-item>
+      <div class="collapsible-list" *ngIf="visibleDinner">
+          <div class="row">
+              <div class="col col-1" style="font-size:12px"></div>
+              <div class="col col-4" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Item</div>
+              <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Qty    </div>
+              <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Calories (Kcal)</div>
+            </div>
+            <div class="row" *ngFor="let dinnerItme of dinnerItmes; let i=index">
+              <div class="col col-1" style="font-size:12px">{{i+1}}</div>
+              <div class="col col-4" style="font-size:12px">{{dinnerItme.itemName}}</div>
+              <div class="col col-3" style="font-size:12px">{{dinnerItme.itemQty}}</div>
+              <div class="col col-3" style="font-size:12px">{{dinnerItme.itemCalories}}</div>
+            </div>
+            <div class="row dinner-summary">
+              <div class="col col-1" style="font-size:12px"></div>
+              <div class="col col-4" style="font-size:12px"><strong>Total</strong></div>
+              <div class="col col-3" style="font-size:12px"><strong>{{totalDinnerItem}}</strong></div>
+              <div class="col col-3" style="font-size:12px"><strong>{{totalDinnerCalories}}</strong></div>
+            </div>
+      </div>
+
     </ion-col>
   </ion-row>
 </ion-content>

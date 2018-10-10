@@ -5,7 +5,8 @@ const routes: Routes = [
   { path: '', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'tab', loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
-  { path: 'foodrecord/:mealType', loadChildren: './foodrecord/foodrecord.module#FoodrecordPageModule' },
+  { path: 'foodrecord/:mealType', loadChildren: './foodrecord/foodrecord.module#FoodrecordPageModule' },  { path: 'exercise', loadChildren: './exercise/exercise.module#ExercisePageModule' },
+
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

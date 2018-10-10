@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-nav-bar>
+      <ion-title>Exercise</ion-title>
+      <ion-button (click)="back()" ion-button slot="icon-only" fill="clear" color="primary" size="small">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+      <ion-button class="doneIcon" (click)="done()" ion-button slot="icon-only" fill="clear" color="primary" size="small">Done</ion-button>
+      <!-- <ion-nav-buttons style="width: 100%; padding: 300px; margin:5px">
+          <ion-title>Exercise</ion-title>
+          <ion-button (click)="done()" ion-button slot="icon-only" fill="clear" color="primary" size="small">Done</ion-button>
+        </ion-nav-buttons> -->
+    </ion-nav-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+
+  <table class="table">
+    <thead align="center">
+      <tr>
+        <th style="width:10%">Select</th>
+        <th style="width:20%">Item</th>
+        <th style="width:50%">Time</th>
+        <th style="width:20%">Kcal</th>
+      </tr>
+    </thead>
+
+    <tbody align="center">
+      <tr *ngFor="let exertiseItem of exertiseItems; let i=index">
+        <td>
+          <ion-checkbox class="itemSelectControl" color="primary" [(ngModel)]="exertiseItems[i].itemSelected" #itemSelected1="ngModel"
+            [checked]=true>
+          </ion-checkbox>
+        </td>
+        <td class="itemNameControl">{{exertiseItem.itemName}}</td>
+        <td>
+          <ion-row class="itemQty">
+            <ion-col class="itemControl" (click)="reduceQty(i)">
+              <ion-icon name="ios-remove-circle-outline"></ion-icon>
+            </ion-col>
+            <ion-col class="selectQtyCol">
+              <ion-input type="number" [(ngModel)]="exertiseItems[i].itemDuration" #itemQty1="ngModel" min="0" value="0" oninput="this.value = Math.floor(Math.abs(this.value))"></ion-input>
+            </ion-col>
+            <ion-col class="itemControl" (click)="addQty(i)">
+              <ion-icon name="ios-add-circle-outline"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </td>
+        <td class="itemCaloriesControl">{{exertiseItem.itemCalories}}</td>
+      </tr>
+    </tbody>
+
+  </table>
+</ion-content>

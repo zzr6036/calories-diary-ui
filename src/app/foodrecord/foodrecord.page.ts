@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-foodrecord',
@@ -17,7 +18,9 @@ export class FoodrecordPage implements OnInit {
                      {itemSelected: false, itemName: "Fries", itemQty: 0, itemCalories: 1000},
                      {itemSelected: false, itemName: "Rice", itemQty: 0, itemCalories: 400},]
   
-  constructor() { }
+  constructor(
+    public navCtrl: NavController,
+  ) { }
 
   ngOnInit() {
   }
@@ -31,6 +34,9 @@ export class FoodrecordPage implements OnInit {
   addQty(i){
     this.foodRecordItems[i].itemQty += 1;
     //console.log(this.itemQtys)
+  }
+  back(){
+    this.navCtrl.navigateForward('/tab/tabs/(dashboard:dashboard)');
   }
 
 }

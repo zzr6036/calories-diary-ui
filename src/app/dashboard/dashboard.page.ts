@@ -11,14 +11,58 @@ import * as moment from 'moment';
 export class DashboardPage implements OnInit {
   private _currentDate: any = moment().format();
   mealType: String
-  visible = false;
+  visibleExercise = false;
+  visibleBreakfast = false;
+  visibleLunch = false;
+  visibleDinner = false;
+
+  totalExerciseDuration = 0;
+  totalExerciseCalories = 0;
+  totalBreakfastItem = 0;
+  totalBreakfastCalories = 0;
+  totalLunchItem = 0;
+  totalLunchCalories = 0;
+  totalDinnerItem = 0;
+  totalDinnerCalories = 0;
+
+  exerciseItems = [{itemName: "Running", itemDuration: 30, itemCalories: 300},
+                   {itemName: "Swimming", itemDuration: 30, itemCalories: 500},
+                   {itemName: "Badminton", itemDuration: 20, itemCalories: 200}]
+
+  breakfastItmes = [{itemName: "Milk", itemQty: 1, itemCalories: 100},
+                    {itemName: "Banana", itemQty: 1, itemCalories: 50},
+                    {itemName: "Bread", itemQty: 2, itemCalories: 100}]
+
+  lunchItmes = [{itemName: "Rice", itemQty: 1, itemCalories: 200},
+                {itemName: "Tomato", itemQty: 1, itemCalories: 80},
+                {itemName: "Meat", itemQty: 1, itemCalories: 200}]
   
+  dinnerItmes = [{itemName: "Noodles", itemQty: 1, itemCalories: 100},
+                {itemName: "Meat", itemQty: 1, itemCalories: 200},
+                {itemName: "Apple", itemQty: 1, itemCalories: 50}]
+
   constructor(
     private router: Router, 
     public navCtrl: NavController,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
+    for(var i=0; i<this.exerciseItems.length; i++){
+      this.totalExerciseDuration += this.exerciseItems[i].itemDuration
+      this.totalExerciseCalories += this.exerciseItems[i].itemCalories
+    }
+    for(var i=0; i<this.breakfastItmes.length; i++){
+      this.totalBreakfastItem += this.breakfastItmes[i].itemQty
+      this.totalBreakfastCalories += this.breakfastItmes[i].itemCalories
+    }
+    for(var i=0; i<this.lunchItmes.length; i++){
+      this.totalLunchItem += this.lunchItmes[i].itemQty
+      this.totalLunchCalories += this.lunchItmes[i].itemCalories
+    }
+    for(var i=0; i<this.dinnerItmes.length; i++){
+      this.totalDinnerItem += this.dinnerItmes[i].itemQty
+      this.totalDinnerCalories += this.dinnerItmes[i].itemCalories
+    }
   }
 
   goToLastDay(){
@@ -31,7 +75,7 @@ export class DashboardPage implements OnInit {
     this.router.navigate(['/foodrecord', mealType])
   }
   exerciseSelection(){
-
+    this.router.navigate(['/exercise/'])
   }
   changeDate(value) {
     console.log(this.currentDate);
@@ -50,8 +94,19 @@ export class DashboardPage implements OnInit {
       this._currentDate = value;
     }
   }
+  toggleExercise(){
+    this.visibleExercise = !this.visibleExercise;
+  }
+  toggleBreakfast(){
+    this.visibleBreakfast = !this.visibleBreakfast;
+  }
+  toggleLunch(){
+    this.visibleLunch = !this.visibleLunch;
+  }
+  toggleDinner(){
+    this.visibleDinner = !this.visibleDinner;
+  }
+  back(){
 
-  toggleExercise() {
-    this.visible = !this.visible;
-   }
+  }
 }
