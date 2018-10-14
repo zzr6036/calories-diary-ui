@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+import { Globals } from '../global';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-exercise',
@@ -10,35 +13,59 @@ export class ExercisePage implements OnInit {
 
   rootPage: any = 'TablePage'
   myInput: string;
+  exerciseItems: any = [];
 
-  //Food record items
- //itemQtys = 0;
-  exertiseItems = [{itemSelected: false, itemName: "Swimming", itemDuration: 0, itemCalories: 300},
-                   {itemSelected: false, itemName: "Running", itemDuration: 0, itemCalories: 280},
-                   {itemSelected: false, itemName: "Walking", itemDuration: 0, itemCalories: 600},
-                   {itemSelected: false, itemName: "Batminton", itemDuration: 0, itemCalories: 1000},
-                   {itemSelected: false, itemName: "Tennis", itemDuration: 0, itemCalories: 400},]
-  
   constructor(
     public navCtrl: NavController,
+    private http: HttpClient,
+    private global: Globals,
+    private storage: Storage
   ) { }
 
   ngOnInit() {
+    this.http.get(this.global.resourceUrl + '/api/exercise/exerciselist').subscribe((resp: any) => {
+      this.exerciseItems = resp.map(item => {
+        return {
+          id: item.Id,
+          itemName: item.Name,
+          itemDuration: 0,
+          itemUnit: item.Unit,
+          itemCalories: item.UnitCaloriesBurnt
+        }
+      });
+    })
   }
 
   reduceQty(i){
-    this.exertiseItems[i].itemDuration -= 10;
-    console.log(this.exertiseItems)
-    //console.log(this.itemQtys)
+    this.exerciseItems[i].itemDuration -= 10;
+    console.log(this.exerciseItems)
   }
 
   addQty(i){
-    this.exertiseItems[i].itemDuration += 10;
-    //console.log(this.itemQtys)
+    this.exerciseItems[i].itemDuration += 10;
   }
 
   back(){
-    this.navCtrl.navigateForward('/tab/tabs/(dashboard:dashboard)');
+    this.navCtrl.navigateBack('/tab/tabs/(dashboard:dashboard)');
   }
 
+  done() {
+    const today = new Date();
+
+    this.exerciseItems.forEach(ex => {
+      if(ex.itemDuration > 0) {
+        console.log(ex);
+
+        const q = {
+          UserId: 34, // TODO:: update Hardcoded user27's id
+          ExerciseId: ex.id,
+          Amount: ex.itemDuration,
+          RecordDate: [today.getFullYear(), today.getMonth() + 1, today.getDate()].join('-') + ' 00:00:00'
+        }
+        this.http.post(this.global.resourceUrl + '/api/exerciserecord/create', q).subscribe(resp => {
+          this.navCtrl.navigateBack('/tab/tabs/(dashboard:dashboard)');
+        })
+      }
+    })
+  }
 }

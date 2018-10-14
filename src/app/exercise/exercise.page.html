@@ -19,37 +19,31 @@
   </ion-searchbar>
 
   <table class="table">
-    <thead align="center">
+    <thead style="text-align: center;">
       <tr>
-        <th style="width:10%">Select</th>
-        <th style="width:20%">Item</th>
-        <th style="width:50%">Time</th>
-        <th style="width:20%">Kcal</th>
+        <th style="width:50%">Item</th>
+        <th style="width:35%">Time</th>
+        <th style="width:25%">Kcal</th>
       </tr>
     </thead>
 
-    <tbody align="center">
-      <tr *ngFor="let exertiseItem of exertiseItems; let i=index">
-        <td>
-          <ion-checkbox class="itemSelectControl" color="primary" [(ngModel)]="exertiseItems[i].itemSelected" #itemSelected1="ngModel"
-            [checked]=true>
-          </ion-checkbox>
-        </td>
-        <td class="itemNameControl">{{exertiseItem.itemName}}</td>
-        <td>
+    <tbody style="text-align: center;">
+      <tr *ngFor="let exerciseItem of exerciseItems; let i=index">
+        <td class="itemNameControl text-left pl-0 pr-0">{{exerciseItem.itemName}}</td>
+        <td class="pl-0 pr-0">
           <ion-row class="itemQty">
             <ion-col class="itemControl" (click)="reduceQty(i)">
               <ion-icon name="ios-remove-circle-outline"></ion-icon>
             </ion-col>
-            <ion-col class="selectQtyCol">
-              <ion-input type="number" [(ngModel)]="exertiseItems[i].itemDuration" #itemQty1="ngModel" min="0" value="0" oninput="this.value = Math.floor(Math.abs(this.value))"></ion-input>
+            <ion-col class="selectQtyCol p-0">
+              <ion-input type="number" [(ngModel)]="exerciseItems[i].itemDuration" #itemQty1="ngModel" min="0" value="0" oninput="this.value = Math.floor(Math.abs(this.value))"></ion-input>
             </ion-col>
             <ion-col class="itemControl" (click)="addQty(i)">
               <ion-icon name="ios-add-circle-outline"></ion-icon>
             </ion-col>
           </ion-row>
         </td>
-        <td class="itemCaloriesControl">{{exertiseItem.itemCalories}}</td>
+        <td class="itemCaloriesControl pl-0 pr-0">{{exerciseItem.itemCalories}}</td>
       </tr>
     </tbody>
 
