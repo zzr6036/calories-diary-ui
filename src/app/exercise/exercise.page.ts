@@ -54,7 +54,6 @@ export class ExercisePage implements OnInit {
 
     this.exerciseItems.forEach(ex => {
       if(ex.itemDuration > 0) {
-        console.log(ex);
 
         const q = {
           UserId: 34, // TODO:: update Hardcoded user27's id

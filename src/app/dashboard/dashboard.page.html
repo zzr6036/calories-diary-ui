@@ -28,30 +28,31 @@
 
   <ion-card class="target-calories">
     <ion-card-header class="calories-display">
-      <p style="font-weight: bold; font-size: 18px; color: white;" text-center>1200 Calories Left</p>
+      <p style="font-weight: bold; font-size: 18px; color: white;" text-center>{{totalCaloriesLeft}} Calories Left</p>
     </ion-card-header>
     <ion-card-content class="calories-content">
       <ion-row>
         <ion-col>
-          <p style="font-weight: bold; font-size: 18px; color: rgb(85, 207, 191);" text-center>0</p>
+          <p style="font-weight: bold; font-size: 18px; color: rgb(85, 207, 191);" text-center>{{availableCalroies}}</p>
         </ion-col>
         <ion-col>
-          <p style="font-weight: bold; font-size: 18px; color: rgb(211, 55, 55);" text-center>0</p>
+          <p style="font-weight: bold; font-size: 18px; color: rgb(211, 55, 55);" text-center>{{totalExerciseCalories}}</p>
         </ion-col>
         <ion-col>
-          <p style="font-weight: bold; font-size: 18px; color: rgb(0, 0, 0);" text-center>0</p>
+          <p style="font-weight: bold; font-size: 18px; color: rgb(0, 0, 0);" text-center>{{totalFoodCalories}}</p>
         </ion-col>
       </ion-row>
       <ion-row>
+        <ion-col>
+          <p style="font-size: 15px; color: rgb(0, 0, 0);" text-center>Available</p>
+        </ion-col>
         <ion-col>
           <p style="font-size: 15px; color: rgb(0, 0, 0);" text-center>Consumed</p>
         </ion-col>
         <ion-col>
           <p style="font-size: 15px; color: rgb(0, 0, 0);" text-center>Burned</p>
         </ion-col>
-        <ion-col>
-          <p style="font-size: 15px; color: rgb(0, 0, 0);" text-center>Net</p>
-        </ion-col>
+        
       </ion-row>
     </ion-card-content>
   </ion-card>
@@ -72,8 +73,8 @@
         <div class="row">
           <div class="col col-1" style="font-size:12px"></div>
           <div class="col col-4" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Item</div>
-          <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Time    (mins)</div>
-          <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Calories (Kcal)</div>
+          <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Time (mins)</div>
+          <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">KCal</div>
         </div>
         <div class="row" *ngFor="let exerciseItem of exerciseItems; let i=index">
           <div class="col col-1" style="font-size:12px">{{i+1}}</div>
@@ -104,13 +105,13 @@
               <div class="col col-1" style="font-size:12px"></div>
               <div class="col col-4" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Item</div>
               <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Qty    </div>
-              <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Calories (Kcal)</div>
+              <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">kCal</div>
             </div>
-            <div class="row" *ngFor="let breakfastItme of breakfastItmes; let i=index">
+            <div class="row" *ngFor="let breakfastItem of breakfastItems; let i=index">
               <div class="col col-1" style="font-size:12px">{{i+1}}</div>
-              <div class="col col-4" style="font-size:12px">{{breakfastItme.itemName}}</div>
-              <div class="col col-3" style="font-size:12px">{{breakfastItme.itemQty}}</div>
-              <div class="col col-3" style="font-size:12px">{{breakfastItme.itemCalories}}</div>
+              <div class="col col-4" style="font-size:12px">{{breakfastItem.itemName}}</div>
+              <div class="col col-3" style="font-size:12px">{{breakfastItem.itemQty}}</div>
+              <div class="col col-3" style="font-size:12px">{{breakfastItem.itemCalories}}</div>
             </div>
             <div class="row breakfaset-summary">
               <div class="col col-1" style="font-size:12px"></div>
@@ -135,13 +136,13 @@
               <div class="col col-1" style="font-size:12px"></div>
               <div class="col col-4" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Item</div>
               <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Qty    </div>
-              <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Calories (Kcal)</div>
+              <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">kCal</div>
             </div>
-            <div class="row" *ngFor="let lunchItme of lunchItmes; let i=index">
+            <div class="row" *ngFor="let lunchItem of lunchItems; let i=index">
               <div class="col col-1" style="font-size:12px">{{i+1}}</div>
-              <div class="col col-4" style="font-size:12px">{{lunchItme.itemName}}</div>
-              <div class="col col-3" style="font-size:12px">{{lunchItme.itemQty}}</div>
-              <div class="col col-3" style="font-size:12px">{{lunchItme.itemCalories}}</div>
+              <div class="col col-4" style="font-size:12px">{{lunchItem.itemName}}</div>
+              <div class="col col-3" style="font-size:12px">{{lunchItem.itemQty}}</div>
+              <div class="col col-3" style="font-size:12px">{{lunchItem.itemCalories}}</div>
             </div>
             <div class="row lunch-summary">
               <div class="col col-1" style="font-size:12px"></div>
@@ -166,13 +167,13 @@
               <div class="col col-1" style="font-size:12px"></div>
               <div class="col col-4" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Item</div>
               <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Qty    </div>
-              <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">Calories (Kcal)</div>
+              <div class="col col-3" style="font-size:12px; font-weight: bold; color: rgb(10, 84, 180);">kCal</div>
             </div>
-            <div class="row" *ngFor="let dinnerItme of dinnerItmes; let i=index">
+            <div class="row" *ngFor="let dinnerItem of dinnerItems; let i=index">
               <div class="col col-1" style="font-size:12px">{{i+1}}</div>
-              <div class="col col-4" style="font-size:12px">{{dinnerItme.itemName}}</div>
-              <div class="col col-3" style="font-size:12px">{{dinnerItme.itemQty}}</div>
-              <div class="col col-3" style="font-size:12px">{{dinnerItme.itemCalories}}</div>
+              <div class="col col-4" style="font-size:12px">{{dinnerItem.itemName}}</div>
+              <div class="col col-3" style="font-size:12px">{{dinnerItem.itemQty}}</div>
+              <div class="col col-3" style="font-size:12px">{{dinnerItem.itemCalories}}</div>
             </div>
             <div class="row dinner-summary">
               <div class="col col-1" style="font-size:12px"></div>
