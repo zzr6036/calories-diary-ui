@@ -46,7 +46,8 @@ export class ExercisePage implements OnInit {
   }
 
   back(){
-    this.navCtrl.navigateBack('/tab/tabs/(dashboard:dashboard)');
+    // this.navCtrl.navigateBack('/tab/tabs/(dashboard:dashboard)');
+    this.navCtrl.goBack();
   }
 
   done() {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { NavController, Item } from '@ionic/angular';
+import { NavController, Item, Events } from '@ionic/angular';
 import * as moment from 'moment';
 import { HttpClient } from '@angular/common/http';
 import { Globals } from '../global';
@@ -41,6 +41,7 @@ export class DashboardPage implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private global: Globals,
+    public eventCtrl: Events
   ) { }
 
   ngOnInit() {
@@ -48,13 +49,23 @@ export class DashboardPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    console.log('entering');
+    //console.log('entering');
     this.loadInfo(new Date());
+    // Avoid ionic double loading bug
+    this.eventCtrl.unsubscribe("Refresh:Dashboard");
+    this.eventCtrl.subscribe("Refresh:Dashboard", (data)=>{
+      console.log(data)
+      this.loadInfo(new Date());
+    });
   }
   ionViewDidEnter() {
-    console.log('entered');
+    //console.log('entered');
+  }
+  ionViewDidLeave(){
+    this.eventCtrl.unsubscribe("Refresh:Dashboard");
   }
   loadInfo(date) {
+    console.log("load info");
     const q = {
       UserId: 34,
       StartDate: [date.getFullYear(), date.getMonth() + 1, date.getDate()].join('-') + ' 00:00:00',
